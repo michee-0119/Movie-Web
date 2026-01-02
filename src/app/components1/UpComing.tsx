@@ -2,32 +2,6 @@ import Link from "next/link";
 import { movieAPI, Movie } from "@/app/components1/SectionAPI";
 import { SeeMore } from "../components/SeeMore";
 
-// export type Movie = {
-//   title: string;
-//   star: string;
-//   vote_average: number;
-//   poster_path: string;
-//   id: number;
-// };
-
-// const movieAPI = async () => {
-//   const responseUpComing = await fetch(
-//     "https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1",
-//     {
-//       headers: {
-//         "Content-Type": "application/json",
-//         Authorization: `Bearer ${process.env.NEXT_PUBLIC_MOVIE_KEY}`,
-//       },
-//     }
-//   );
-
-//   const upComingMovies = await responseUpComing.json();
-
-//   const upComingMovieResults = upComingMovies.results;
-
-//   return { upComingMovieResults };
-// };
-
 export const UpComing = async () => {
   const {
     popularMovieResults,
@@ -42,7 +16,7 @@ export const UpComing = async () => {
           <SeeMore />
         </Link>
       </div>
-      <div className="flex flex-wrap justify-center gap-8">
+      <div className="flex flex-wrap justify-center items-center gap-8">
         {popularMovieResults
           .map((info) => (
             <div className="bg-[#F4F4F5] rounded-lg " key={info.title}>

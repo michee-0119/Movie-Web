@@ -4,7 +4,7 @@ import { TopRated } from "./TopRated";
 
 export const MovieCard = () => {
   return (
-    <div>
+    <div className="flex flex-col justify-center items-center">
       <UpComing />
       <Popular />
       <TopRated />

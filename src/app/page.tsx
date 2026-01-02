@@ -1,11 +1,12 @@
 import { MovieCard } from "./components1/MovieCard";
-import { Carousel } from "@/components/ui/carousel";
+import { PlayCarousel } from "./components1/PlayCarousel";
+import { CarouselAPI } from "./components1/CarouselAPI";
 
-export default function Home() {
+export default async function Home() {
+  const movies = await CarouselAPI();
   return (
-    <div className="flex items-center flex-col pt-[52px]">
-      <Carousel />
-      <img className="w-full h-[600px]" src="wicked.jpg" alt="" />
+    <div className="flex flex-col pt-[52px]">
+      <PlayCarousel movies={movies} />
       <MovieCard />
     </div>
   );

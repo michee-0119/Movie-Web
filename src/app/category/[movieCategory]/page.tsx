@@ -13,12 +13,12 @@ export default async function Page({
     await movieAPI(movieCategory);
 
   return (
-    <div className="grid grid-col-5 gap-2 2-[1440px] m-auto">
+    <div className="grid grid-col-5 gap-2 justify-center m-auto pb-[76px]">
       <div className="w-360 pl-20 pr-20 pt-13">
         <div className="flex justify-between pb-[36px]">
           <p className="font-bold text-2xl">{movieCategory}</p>
         </div>
-        <div className="flex flex-wrap justify-center gap-8">
+        <div className="flex flex-wrap justify-center items-center gap-8">
           {popularMovieResults
             .map((info) => (
               <div className="bg-[#F4F4F5] rounded-lg " key={info.title}>
