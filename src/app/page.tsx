@@ -5,7 +5,7 @@ import { CarouselAPI } from "./components1/CarouselAPI";
 export default async function Home() {
   const movies = await CarouselAPI();
   return (
-    <div className="flex flex-col pt-[52px]">
+    <div className="flex flex-col ">
       <PlayCarousel movies={movies} />
       <MovieCard />
     </div>

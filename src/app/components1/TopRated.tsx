@@ -19,25 +19,27 @@ export const TopRated = async () => {
       <div className="flex flex-wrap justify-center gap-8 pb-[51px]">
         {popularMovieResults
           .map((info) => (
-            <div className="bg-[#F4F4F5] rounded-lg " key={info.title}>
-              <img
-                src={`https://image.tmdb.org/t/p/w500${info.poster_path}`}
-                alt=""
-                className="h-85 w-[229.73px] rounded-lg "
-              />
-              <p className="flex items-center pt-2 pl-2 gap-[5.33px]">
+            <Link key={info.id} href={`/detail/${info.id}`}>
+              <div className="bg-[#F4F4F5] rounded-lg " key={info.title}>
                 <img
-                  src="Star.png"
+                  src={`https://image.tmdb.org/t/p/w500${info.poster_path}`}
                   alt=""
-                  className="h-4 w-4 flex justify-center items-center"
+                  className="h-85 w-[229.73px] rounded-lg hover:scale-105 transition-all duration-300"
                 />
-                {info.vote_average.toFixed(1)}
-                /10
-              </p>
-              <div className="w-[213.73px] h-[95px] pt-2 pl-2">
-                <p className="w-57">{info.title}</p>
+                <p className="flex items-center pt-2 pl-2 gap-[5.33px]">
+                  <img
+                    src="Star.png"
+                    alt=""
+                    className="h-4 w-4 flex justify-center items-center"
+                  />
+                  {info.vote_average.toFixed(1)}
+                  /10
+                </p>
+                <div className="w-[213.73px] h-[95px] pt-2 pl-2">
+                  <p className="w-57">{info.title}</p>
+                </div>
               </div>
-            </div>
+            </Link>
           ))
           .slice(0, 10)}
       </div>

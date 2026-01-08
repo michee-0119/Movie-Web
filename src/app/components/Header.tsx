@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import { fetcher } from "../../../utils/fetcher";
 import useSWR from "swr";
 import { Loader } from "lucide-react";
+import Link from "next/link";
 
 interface Genre {
   id: number;
@@ -17,7 +18,7 @@ interface Genre {
 export const Header = () => {
   const [searchValue, setSearchValue] = useState("");
   const { data, isLoading, error } = useSWR(
-    `${process.env.TMDB_BASE_URL}/search/movie?query=${searchValue}&language=en-US&page=1`,
+    `https://api.themoviedb.org/3/search/movie?query=${searchValue}&language=en-US&page=1`,
     fetcher
   );
 
@@ -53,10 +54,12 @@ export const Header = () => {
   return (
     <div className="w-full h-[59px] flex flex-row justify-between pr-4 pl-4 bg-[#FFFFFF] items-center">
       <div className="w-full h-[36px] flex flex-row justify-between bg-[#FFFFFF] items-center">
-        <div className="w-[92px] h-[20px] flex flex-row gap-2 items-center ">
-          <img className="w-[20px] h-[15px]" src="/film.png" alt="" />
-          <div className="text-[#4338CA] text-base font-bold">Movie Z</div>
-        </div>
+        <Link href="/">
+          <div className="w-[92px] h-[20px] flex flex-row gap-2 items-center ">
+            <img className="w-[20px] h-[15px]" src="/film.png" alt="" />
+            <div className="text-[#4338CA] text-base font-bold">Movie Z</div>
+          </div>
+        </Link>
         <div className="w-[488px] h-[36px] flex flex-row gap-3 relative justify-center items-center">
           <Button
             className="bg-white text-black border border-gray-300 w-24.15 h-9"

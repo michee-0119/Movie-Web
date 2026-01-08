@@ -2,7 +2,7 @@ import { fetchExternalImage } from "next/dist/server/image-optimizer";
 
 export async function CarouselAPI() {
   const response = await fetch(
-    " https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1",
+    `https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1`,
     {
       headers: {
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_MOVIE_KEY}`,
@@ -22,29 +22,34 @@ export async function seeMovieTrailer(movieId: number) {
       headers: {
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_MOVIE_KEY}`,
       },
-    }
-  );
-
-  const data = await res.json();
-
-  const trailer = data.results?.find(
-    (v: any) => v.type === "Trailer" && v.site === "Youtube"
-  );
-
-  return trailer?.key || null;
-}
-
-export async function seeMovieDetail(movieId: string) {
-  const res = await fetch(
-    `https://api.themoviedb.org/3/movie/${movieId}?language=en-US`,
-    {
-      headers: {
-        Authorization: `Bearer ${process.env.NEXT_PUBLIC_MOVIE_KEY}`,
-      },
       cache: "no-store",
     }
   );
 
-  console.log("Movie API response status:", res.status);
-  if (!res.ok) return res.json();
+  if (!res.ok) return null;
+
+  const data = await res.json();
+  console.log(data.results);
+  const trailer = data.results?.find(
+    (item: any) => item.type == "Trailer" && item.site == "YouTube"
+  );
+
+  console.log(trailer);
+
+  return trailer?.key ?? null;
 }
+
+// export async function seeMovieDetail(movieId: string) {
+//   const res = await fetch(
+//     `https://api.themoviedb.org/3/movie/${movieId}?language=en-US`,
+//     {
+//       headers: {
+//         Authorization: `Bearer ${process.env.NEXT_PUBLIC_MOVIE_KEY}`,
+//       },
+//       cache: "no-store",
+//     }
+//   );
+
+//   console.log("Movie API response status:", res.status);
+//   if (!res.ok) return null;
+// }

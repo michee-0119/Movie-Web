@@ -67,7 +67,7 @@ export function PlayCarousel({ movies }: { movies: Movie[] }) {
                   <p className="text-[#71717A] text-[16px]"> /10</p>
                 </div>
 
-                <p className="text-[#FAFAFA] text-[12px] w-[302px] pb-[16px]">
+                <p className="text-[#FAFAFA] text-[12px] w-[450px] pb-[16px]">
                   {movie.overview}
                 </p>
 
@@ -96,7 +96,9 @@ export function PlayCarousel({ movies }: { movies: Movie[] }) {
             <button
               onClick={() => setOpen(false)}
               className="absolute -top-10 right-0 text-white text-xl"
-            ></button>
+            >
+              X
+            </button>
             <iframe
               className="w-full aspect-video rounded-lg"
               src={`https://www.youtube.com/embed/${trailerKey}`}
