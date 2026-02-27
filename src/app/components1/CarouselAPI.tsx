@@ -8,7 +8,7 @@ export async function CarouselAPI() {
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_MOVIE_KEY}`,
       },
       cache: "no-store",
-    }
+    },
   );
 
   const data = await response.json();
@@ -23,7 +23,7 @@ export async function seeMovieTrailer(movieId: number) {
         Authorization: `Bearer ${process.env.NEXT_PUBLIC_MOVIE_KEY}`,
       },
       cache: "no-store",
-    }
+    },
   );
 
   if (!res.ok) return null;
@@ -31,7 +31,7 @@ export async function seeMovieTrailer(movieId: number) {
   const data = await res.json();
   console.log(data.results);
   const trailer = data.results?.find(
-    (item: any) => item.type == "Trailer" && item.site == "YouTube"
+    (item: any) => item.type == "Trailer" && item.site == "YouTube",
   );
 
   console.log(trailer);
